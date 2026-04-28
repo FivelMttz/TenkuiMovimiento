@@ -123,8 +123,23 @@ const SedePage = ({ id, navigate }) => {
             </div>
           </div>
 
-          {/* Mock map card */}
-          <div style={{ background: 'linear-gradient(135deg, #c4dccd 0%, #8fb89e 100%)', borderRadius: 28, padding: 32, position: 'relative', overflow: 'hidden', minHeight: 320, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          {/* Map card */}
+          <a href={`https://maps.google.com/?q=${encodeURIComponent(v.address + ', San Luis Potosí')}`} target="_blank" rel="noreferrer"
+             className="map-card"
+             style={{ 
+               background: 'linear-gradient(135deg, #c4dccd 0%, #8fb89e 100%)', 
+               borderRadius: 28, 
+               padding: 32, 
+               position: 'relative', 
+               overflow: 'hidden', 
+               minHeight: 320, 
+               color: '#fff', 
+               display: 'flex', 
+               flexDirection: 'column', 
+               justifyContent: 'space-between',
+               textDecoration: 'none',
+               transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+             }}>
             {/* mock streets */}
             <svg style={{ position: 'absolute', inset: 0, opacity: 0.3 }} viewBox="0 0 400 300" preserveAspectRatio="none">
               <path d="M0 80 L 400 60" stroke="#fff" strokeWidth="2" fill="none"/>
@@ -145,11 +160,11 @@ const SedePage = ({ id, navigate }) => {
               </div>
             </div>
             <div className="row" style={{ position: 'relative', zIndex: 2, justifyContent: 'flex-end' }}>
-              <a className="btn" style={{ background: '#fff', color: 'var(--ink)' }} href={`https://maps.google.com/?q=${encodeURIComponent(v.address + ', San Luis Potosí')}`} target="_blank" rel="noreferrer">
+              <div className="btn" style={{ background: '#fff', color: 'var(--ink)' }}>
                 <Icon name="compass" size={16}/> Abrir en Google Maps
-              </a>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
