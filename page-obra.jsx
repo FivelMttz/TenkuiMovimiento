@@ -21,7 +21,7 @@ const ObraPage = ({ id, navigate, openTickets }) => {
       {/* HERO */}
       <section style={{ paddingTop: 24 }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.55fr 1fr', gap: 20, alignItems: 'stretch' }}>
+          <div className="grid-cols-hero" style={{ alignItems: 'stretch' }}>
             <Scene scene={sceneFor(event)} accent={event.accent} style={{ borderRadius: 32, minHeight: 520, padding: 44, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', color: '#fff', overflow: 'hidden' }}>
               <div style={{ position: 'relative', zIndex: 2 }}>
                 <div className="row gap-8" style={{ marginBottom: 16, flexWrap: 'wrap' }}>
@@ -54,7 +54,7 @@ const ObraPage = ({ id, navigate, openTickets }) => {
 
       {/* CONTENT */}
       <section className="section">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 32, alignItems: 'start' }}>
+        <div className="container grid-cols-2" style={{ alignItems: 'start' }}>
           {/* LEFT */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div className="card-cream" style={{ position: 'relative' }}>
@@ -93,7 +93,7 @@ const ObraPage = ({ id, navigate, openTickets }) => {
             </div>
 
             {/* About venue */}
-            <div className="card" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'center' }}>
+            <div className="card grid-cols-half" style={{ alignItems: 'center' }}>
               <PlaceholderTile kind="pin" accent={venue.accent} label={`SEDE · ${venue.short.toUpperCase()}`}/>
               <div>
                 <div className="mono" style={{ color: 'var(--muted)' }}>La sede</div>
