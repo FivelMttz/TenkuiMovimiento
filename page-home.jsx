@@ -213,35 +213,8 @@ const HomePage = ({ navigate, openTickets }) => {
         </div>
       </section>
 
-      {/* VÍDEO PROMOCIONAL */}
-      <section className="section" style={{ paddingBottom: 0 }}>
-        <div className="container">
-          <div className="row" style={{ alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 16 }}>
-            <div>
-              <div className="eyebrow" style={{ color: 'var(--muted)' }}>★ Memoria audiovisual</div>
-              <h2 className="section-title">El movimiento <em className="italic" style={{ color: 'var(--primary)' }}>en video</em></h2>
-            </div>
-            <div className="muted" style={{ fontSize: 13, maxWidth: 320 }}>
-              Una mirada a lo que vivimos en nuestras presentaciones.
-            </div>
-          </div>
-
-          <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', background: 'var(--ink)', borderRadius: 24, overflow: 'hidden', boxShadow: '0 24px 48px -12px rgba(40,20,10,0.2)' }}>
-            {/* Si tu archivo se llama diferente, ajusta el src */}
-            <video 
-              controls 
-              preload="metadata"
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-            >
-              <source src="./uploads/lisa.mp4" type="video/mp4" />
-              Tu navegador no soporta la reproducción de video.
-            </video>
-          </div>
-        </div>
-      </section>
-
       {/* CTA / WhatsApp */}
-      <section className="section">
+      <section className="section" style={{ paddingBottom: 0 }}>
         <div className="container">
           <div style={{ background: 'var(--primary)', borderRadius: 36, padding: '64px 56px', position: 'relative', overflow: 'hidden', color: '#fff' }}>
             <div className="dust" style={{ opacity: 0.3 }}/>
@@ -263,6 +236,33 @@ const HomePage = ({ navigate, openTickets }) => {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* VÍDEO ANIMACIÓN FINAL */}
+      <section className="section">
+        <div className="container">
+          <div className="row" style={{ alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <div className="eyebrow" style={{ color: 'var(--muted)' }}>★ Memoria audiovisual</div>
+              <h2 className="section-title">El movimiento <em className="italic" style={{ color: 'var(--primary)' }}>en video</em></h2>
+            </div>
+            <div className="muted" style={{ fontSize: 13, maxWidth: 320 }}>
+              Una mirada a lo que vivimos en nuestras presentaciones.
+            </div>
+          </div>
+
+          <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', background: 'var(--ink)', borderRadius: 24, overflow: 'hidden', boxShadow: '0 24px 48px -12px rgba(40,20,10,0.2)' }}>
+            <video 
+              autoPlay 
+              muted 
+              loop 
+              playsInline
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+            >
+              <source src="./uploads/lisa.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
       </section>
