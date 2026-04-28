@@ -17,7 +17,7 @@ const SedesPage = ({ navigate }) => {
 
       <section className="section" style={{ paddingTop: 24 }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: 20 }}>
+          <div className="grid-cols-auto">
             {venues.map(v => {
               const evCount = EVENTS.filter(e => e.venue === v.id || (e.venuesItinerant || []).some(i => i.venue === v.id)).length;
               return (
@@ -75,7 +75,7 @@ const SedePage = ({ id, navigate }) => {
       {/* Hero */}
       <section style={{ paddingTop: 0, paddingBottom: 24 }}>
         <div className="container">
-          <Scene scene="soft" accent={v.accent} style={{ borderRadius: 32, padding: 56, color: '#fff', overflow: 'hidden', display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 32, alignItems: 'center' }}>
+          <Scene scene="soft" accent={v.accent} className="grid-cols-2" style={{ borderRadius: 32, padding: 'clamp(32px, 6vw, 56px)', color: '#fff', overflow: 'hidden', alignItems: 'center' }}>
             <div style={{ position: 'relative', zIndex: 2 }}>
               <div className="chip" style={{ background: 'rgba(0,0,0,0.28)', color: '#fff', marginBottom: 16 }}>SEDE</div>
               <h1 className="display" style={{ fontSize: 'clamp(48px, 6vw, 84px)', lineHeight: 0.96, margin: 0, color: '#fff' }}>{v.name}</h1>
@@ -84,7 +84,7 @@ const SedePage = ({ id, navigate }) => {
                 {v.tags.map(t => <span key={t} className="chip" style={{ background: 'rgba(255,255,255,0.18)', color: '#fff', fontSize: 12, backdropFilter: 'blur(6px)' }}>{t}</span>)}
               </div>
             </div>
-            <div style={{ position: 'relative', zIndex: 2 }}>
+            <div className="hide-on-mobile" style={{ position: 'relative', zIndex: 2 }}>
               <PlaceholderTile kind="pin" accent="#fff" label={v.barrio.toUpperCase()}/>
             </div>
           </Scene>
@@ -93,7 +93,7 @@ const SedePage = ({ id, navigate }) => {
 
       {/* Details + Map */}
       <section className="section" style={{ paddingTop: 24 }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 24 }}>
+        <div className="container grid-cols-2" style={{ gap: 24 }}>
           <div className="card-cream">
             <div className="display" style={{ fontSize: 26, marginBottom: 16 }}>Detalles del lugar</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -165,7 +165,7 @@ const SedePage = ({ id, navigate }) => {
           {events.length === 0 ? (
             <div className="card muted" style={{ textAlign: 'center', padding: 32 }}>Pronto anunciaremos funciones aquí.</div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
+            <div className="grid-cols-auto">
               {events.map(e => <EventCard key={e.id} event={e} navigate={navigate}/>)}
             </div>
           )}
