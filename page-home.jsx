@@ -79,7 +79,7 @@ const HomePage = ({ navigate, openTickets }) => {
             </button>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 20 }}>
+          <div className="grid-cols-12">
             {/* big featured */}
             <FeaturedCard event={featured[0]} navigate={navigate} large/>
             <div style={{ gridColumn: 'span 6', display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -106,7 +106,7 @@ const HomePage = ({ navigate, openTickets }) => {
               Carteles diseñados por el equipo gráfico del movimiento. Toca uno para ver detalle, sede y boletos.
             </div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 18 }}>
+          <div className="grid-cols-auto">
             {EVENTS.filter(e => PHOTOS[e.id]).map(e => (
               <div key={e.id} onClick={() => navigate({ page: 'obra', id: e.id })}
                    style={{ cursor: 'pointer', borderRadius: 16, overflow: 'hidden', background: '#fff', transition: 'transform .2s ease, box-shadow .2s ease', boxShadow: '0 1px 0 rgba(0,0,0,0.04), 0 12px 24px -16px rgba(40,20,10,0.18)' }}
@@ -128,7 +128,7 @@ const HomePage = ({ navigate, openTickets }) => {
 
       {/* MOVEMENT — what is Tënkui */}
       <section style={{ background: 'var(--cream)', borderRadius: 0, padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+        <div className="container grid-cols-2" style={{ gap: 64, alignItems: 'center' }}>
           <div>
             <div className="eyebrow">El movimiento</div>
             <h2 className="section-title" style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}>
@@ -218,7 +218,7 @@ const HomePage = ({ navigate, openTickets }) => {
         <div className="container">
           <div style={{ background: 'var(--primary)', borderRadius: 36, padding: '64px 56px', position: 'relative', overflow: 'hidden', color: '#fff' }}>
             <div className="dust" style={{ opacity: 0.3 }}/>
-            <div style={{ position: 'relative', zIndex: 2, display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 48, alignItems: 'center' }}>
+            <div className="grid-cols-2" style={{ position: 'relative', zIndex: 2, gap: 48, alignItems: 'center' }}>
               <div>
                 <div className="eyebrow" style={{ color: '#f2b544' }}>★ Cooperación programada</div>
                 <h2 className="section-title" style={{ color: '#fff', fontSize: 'clamp(36px, 5vw, 56px)' }}>
@@ -251,11 +251,12 @@ const FeaturedCard = ({ event, navigate, large = false, medium = false }) => {
   const minH = large ? 480 : medium ? 320 : 220;
 
   return (
-    <div onClick={() => navigate({ page: 'obra', id: event.id })}
+    <div className={`featured-card-wrapper ${large ? 'featured-card--large' : medium ? 'featured-card--medium' : ''}`}
+         onClick={() => navigate({ page: 'obra', id: event.id })}
          style={{ gridColumn: `span ${span}`, cursor: 'pointer', transition: 'transform .2s ease' }}
          onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-3px)'}
          onMouseLeave={e => e.currentTarget.style.transform = 'none'}>
-      <Scene scene={sceneFor(event)} accent={event.accent} style={{ borderRadius: 28, minHeight: minH, padding: 28, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: '#fff', position: 'relative', overflow: 'hidden' }}>
+      <Scene scene={sceneFor(event)} accent={event.accent} className="featured-card-scene" style={{ borderRadius: 28, minHeight: minH, padding: 28, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', color: '#fff', position: 'relative', overflow: 'hidden' }}>
         {PHOTOS[event.id] && large && (
           <img src={PHOTOS[event.id]} alt="" aria-hidden="true"
                style={{ position: 'absolute', right: -40, top: -20, width: 280, height: 'calc(100% + 40px)', objectFit: 'cover', objectPosition: 'center', borderRadius: 16, opacity: 0.92, zIndex: 1, transform: 'rotate(3deg)', boxShadow: '0 18px 40px -12px rgba(0,0,0,0.4)' }}/>
@@ -318,10 +319,11 @@ const DaySchedule = ({ navigate }) => {
             const v = VENUES[e.venue];
             return (
               <div key={e.id} onClick={() => navigate({ page: 'obra', id: e.id })}
-                   style={{ background: '#fff', borderRadius: 18, padding: '18px 22px', display: 'grid', gridTemplateColumns: '90px 1fr auto', gap: 20, alignItems: 'center', cursor: 'pointer', transition: 'all .15s ease' }}
+                   className="day-schedule-item"
+                   style={{ background: '#fff', borderRadius: 18, padding: '18px 22px', gap: 20, alignItems: 'center', cursor: 'pointer', transition: 'all .15s ease' }}
                    onMouseEnter={ev => ev.currentTarget.style.boxShadow = 'var(--shadow-card)'}
                    onMouseLeave={ev => ev.currentTarget.style.boxShadow = 'none'}>
-                <div className="display" style={{ fontSize: 28, color: e.accent }}>{e.time.replace(/[ap]\.m\./, m => m.replace(/\./g, ''))}</div>
+                <div className="display time-label" style={{ fontSize: 28, color: e.accent }}>{e.time.replace(/[ap]\.m\./, m => m.replace(/\./g, ''))}</div>
                 <div>
                   <div style={{ display: 'flex', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
                     <span className="chip" style={{ background: e.accent + '22', color: e.accent, fontSize: 10 }}>{e.discipline}</span>
