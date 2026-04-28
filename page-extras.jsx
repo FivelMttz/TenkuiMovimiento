@@ -16,7 +16,7 @@ const MovimientoPage = ({ navigate }) => (
 
     <section className="section">
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
+        <div className="grid-cols-auto" style={{ gap: 16 }}>
           {[
             { n: '01', t: 'Autogestión', d: 'Espacios culturales que se sostienen entre sí, sin depender de patrocinios institucionales.', c: '#f08d6e' },
             { n: '02', t: 'Multidisciplina', d: 'Cuatro disciplinas conviviendo en un mismo calendario y un mismo público.', c: '#8fd2c0' },
@@ -34,7 +34,7 @@ const MovimientoPage = ({ navigate }) => (
     </section>
 
     <section style={{ background: 'var(--cream)', padding: '80px 0' }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+      <div className="container grid-cols-2" style={{ gap: 64, alignItems: 'center' }}>
         <div>
           <div className="eyebrow">San Luis Potosí</div>
           <h2 className="section-title">Capilaridad <em className="italic" style={{ color: 'var(--primary)' }}>territorial</em>.</h2>
@@ -93,14 +93,14 @@ const BoletosPage = ({ navigate }) => {
       </section>
 
       <section className="section" style={{ paddingTop: 16 }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 24, alignItems: 'start' }}>
+        <div className="container grid-cols-2" style={{ gap: 24, alignItems: 'start' }}>
           {/* Calculator */}
-          <div className="card-cream" style={{ padding: 32 }}>
+          <div className="card-cream" style={{ padding: 'clamp(20px, 5vw, 32px)' }}>
             <div className="row" style={{ alignItems: 'center', gap: 12, marginBottom: 20 }}>
               <span style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--primary)', color: '#fff', display: 'grid', placeItems: 'center', fontWeight: 700, fontSize: 14 }}>1</span>
               <div className="display" style={{ fontSize: 24 }}>Elige una función</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 10, marginBottom: 28 }}>
+            <div className="grid-cols-auto" style={{ gap: 10, marginBottom: 28 }}>
               {EVENTS.filter(e => e.cost.startsWith('cooperacion')).map(e => (
                 <button key={e.id} onClick={() => setEventoSel(e.id)}
                         style={{ background: eventoSel === e.id ? e.accent : '#fff', color: eventoSel === e.id ? '#fff' : 'var(--ink)', border: `1.5px solid ${eventoSel === e.id ? e.accent : 'transparent'}`, borderRadius: 14, padding: '12px 16px', textAlign: 'left', cursor: 'pointer', transition: 'all .15s ease' }}>
@@ -115,12 +115,12 @@ const BoletosPage = ({ navigate }) => {
               <div className="display" style={{ fontSize: 24 }}>Asistentes</div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 14 }}>
               <Counter label="Adultos" sub={`$${tarifa.a} c/u · ${tarifa.label}`} value={adultos} onChange={setAdultos}/>
               <Counter label="Infancias" sub={`$${tarifa.i} c/u · ${tarifa.label}`} value={infancias} onChange={setInfancias}/>
             </div>
 
-            <div style={{ background: '#fff', borderRadius: 18, padding: 22, marginTop: 24 }}>
+            <div style={{ background: '#fff', borderRadius: 18, padding: 'clamp(16px, 4vw, 22px)', marginTop: 24 }}>
               <div className="row" style={{ justifyContent: 'space-between', padding: '6px 0', fontSize: 14 }}>
                 <span>Adultos × {adultos}</span>
                 <span>${adultos * tarifa.a}</span>
