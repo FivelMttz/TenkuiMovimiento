@@ -62,7 +62,7 @@ const ProgramaPage = ({ navigate }) => {
               <p className="muted">Prueba con otros filtros para descubrir más funciones.</p>
             </div>
           ) : view === 'grid' ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 }}>
+            <div className="grid-cols-auto">
               {filtered.map(e => <EventCard key={e.id} event={e} navigate={navigate}/>)}
             </div>
           ) : (
@@ -148,8 +148,8 @@ const ListView = ({ events, navigate }) => {
               const v = VENUES[e.venue];
               return (
                 <div key={e.id} onClick={() => navigate({ page: 'obra', id: e.id })}
-                     className="card"
-                     style={{ display: 'grid', gridTemplateColumns: '110px 1fr auto auto', gap: 24, alignItems: 'center', cursor: 'pointer', padding: '20px 24px' }}
+                     className="card list-view-item"
+                     style={{ gap: 24, alignItems: 'center', cursor: 'pointer', padding: '20px 24px' }}
                      onMouseEnter={ev => ev.currentTarget.style.background = 'rgba(251,233,201,0.4)'}
                      onMouseLeave={ev => ev.currentTarget.style.background = '#fff'}>
                   <div className="display" style={{ fontSize: 32, color: e.accent }}>{e.time.replace(/[ap]\.m\./, '').trim()}</div>
